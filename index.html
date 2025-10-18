@@ -559,6 +559,21 @@
                 max-width: 300px;
             }
         }
+
+        /* Стили для центрирования последних двух карточек жалоб */
+        .support-grid-centered {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        @media (min-width: 768px) {
+            .support-grid-centered {
+                grid-template-columns: repeat(2, minmax(280px, 1fr));
+                justify-content: center;
+            }
+        }
     </style>
 </head>
 <body>
@@ -595,7 +610,7 @@
                     <span class="stat-label">Бизнесов</span>
                 </div>
                 <div class="hero-stat">
-                    <span class="stat-number">6+</span>
+                    <span class="stat-number">7+</span>
                     <span class="stat-label">Фракций</span>
                 </div>
             </div>
@@ -676,6 +691,10 @@
                 <div class="faction-card">
                     <h3 class="faction-name">Федеральная Служба Безопасности</h3>
                     <p class="faction-description">Обеспечение национальной безопасности, борьба с терроризмом и шпионажем. Элита правоохранительной системы.</p>
+                </div>
+                <div class="faction-card">
+                    <h3 class="faction-name">Министерство Внутренних Дел</h3>
+                    <p class="faction-description">Обеспечение общественного порядка, борьба с преступностью и защита прав граждан. Патрулирование улиц и расследование преступлений.</p>
                 </div>
             </div>
         </div>
@@ -782,12 +801,24 @@
                             Подать жалобу
                         </a>
                     </div>
+                </div>
+                
+                <!-- Центрированные последние две карточки жалоб -->
+                <div class="support-grid-centered">
                     <div class="support-card">
                         <div class="support-icon">👑</div>
                         <h3 class="support-title">Жалоба на лидера фракции</h3>
                         <p>Пожаловаться на действия лидера фракции</p>
                         <a href="https://discord.com/channels/1108341758590472293/1410640570216349716" class="btn btn-secondary" target="_blank" style="margin-top: 1rem;">
                             Подать жалобу
+                        </a>
+                    </div>
+                    <div class="support-card">
+                        <div class="support-icon">📝</div>
+                        <h3 class="support-title">Другая жалоба</h3>
+                        <p>Для других типов жалоб и обращений</p>
+                        <a href="https://discord.com/channels/1108341758590472293/1410640570216349716" class="btn btn-secondary" target="_blank" style="margin-top: 1rem;">
+                            Подать обращение
                         </a>
                     </div>
                 </div>
