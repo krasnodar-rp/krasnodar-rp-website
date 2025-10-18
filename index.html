@@ -388,7 +388,7 @@
 
         .support-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(2, 1fr);
             gap: 1.5rem;
             margin-top: 2rem;
         }
@@ -403,7 +403,7 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            min-height: 220px;
+            min-height: 200px;
         }
 
         .support-card:hover {
@@ -428,24 +428,7 @@
             margin-bottom: 1.5rem;
             flex-grow: 1;
             opacity: 0.9;
-        }
-
-        /* Специальные стили для центрирования последних двух карточек */
-        .support-grid-centered {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
-            margin-top: 1.5rem;
-        }
-        
-        @media (min-width: 768px) {
-            .support-grid-centered {
-                grid-template-columns: repeat(2, minmax(280px, 1fr));
-                justify-content: center;
-                max-width: 600px;
-                margin-left: auto;
-                margin-right: auto;
-            }
+            font-size: 0.95rem;
         }
 
         /* Rules */
@@ -575,8 +558,12 @@
                 font-size: 2rem;
             }
             
-            .support-grid, .support-grid-centered {
+            .support-grid {
                 grid-template-columns: 1fr;
+            }
+            
+            .support-card {
+                min-height: 180px;
             }
             
             .rules-buttons {
@@ -784,7 +771,7 @@
             <div class="support-links">
                 <h3 class="section-title" style="font-size: 2rem;">📞 Поддержка и жалобы</h3>
                 
-                <!-- Первые 4 карточки жалоб -->
+                <!-- Все карточки жалоб в одной сетке по 2 в ряд -->
                 <div class="support-grid">
                     <div class="support-card">
                         <div class="support-icon">❓</div>
@@ -792,6 +779,14 @@
                         <p class="support-description">Задайте вопросы команде проекта</p>
                         <a href="https://discord.com/channels/1108341758590472293/1411075288322019459" class="btn btn-secondary" target="_blank">
                             Перейти
+                        </a>
+                    </div>
+                    <div class="support-card">
+                        <div class="support-icon">💬</div>
+                        <h3 class="support-title">Жалоба на пользователя Discord</h3>
+                        <p class="support-description">Пожаловаться на нарушение в Discord</p>
+                        <a href="https://discord.com/channels/1108341758590472293/1410640314070470676" class="btn btn-secondary" target="_blank">
+                            Подать жалобу
                         </a>
                     </div>
                     <div class="support-card">
@@ -810,18 +805,6 @@
                             Подать жалобу
                         </a>
                     </div>
-                    <div class="support-card">
-                        <div class="support-icon">💬</div>
-                        <h3 class="support-title">Жалоба на пользователя Discord</h3>
-                        <p class="support-description">Пожаловаться на нарушение в Discord</p>
-                        <a href="https://discord.com/channels/1108341758590472293/1410640314070470676" class="btn btn-secondary" target="_blank">
-                            Подать жалобу
-                        </a>
-                    </div>
-                </div>
-                
-                <!-- Последние 2 карточки жалоб (центрированные) -->
-                <div class="support-grid-centered">
                     <div class="support-card">
                         <div class="support-icon">👑</div>
                         <h3 class="support-title">Жалоба на лидера фракции</h3>
