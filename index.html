@@ -48,7 +48,6 @@
             justify-content: space-between;
             align-items: center;
             padding: 1rem 20px;
-            transition: all 0.3s ease;
         }
 
         .logo h1 {
@@ -61,12 +60,8 @@
         }
 
         @keyframes logoGlow {
-            0% {
-                text-shadow: 0 0 5px rgba(234, 67, 67, 0.5);
-            }
-            100% {
-                text-shadow: 0 0 15px rgba(234, 67, 67, 0.8), 0 0 20px rgba(234, 67, 67, 0.6);
-            }
+            0% { text-shadow: 0 0 5px rgba(234, 67, 67, 0.5); }
+            100% { text-shadow: 0 0 15px rgba(234, 67, 67, 0.8), 0 0 20px rgba(234, 67, 67, 0.6); }
         }
 
         .nav {
@@ -132,12 +127,8 @@
         }
 
         @keyframes backgroundMove {
-            0% {
-                transform: translateY(0) translateX(0);
-            }
-            100% {
-                transform: translateY(-50px) translateX(-50px);
-            }
+            0% { transform: translateY(0) translateX(0); }
+            100% { transform: translateY(-50px) translateX(-50px); }
         }
 
         .floating-elements {
@@ -158,54 +149,26 @@
         }
 
         .floating-element:nth-child(1) {
-            width: 100px;
-            height: 100px;
-            top: 10%;
-            left: 10%;
-            animation-delay: 0s;
-            animation-duration: 20s;
+            width: 100px; height: 100px; top: 10%; left: 10%;
+            animation-delay: 0s; animation-duration: 20s;
         }
-
         .floating-element:nth-child(2) {
-            width: 150px;
-            height: 150px;
-            top: 60%;
-            left: 80%;
-            animation-delay: 2s;
-            animation-duration: 25s;
+            width: 150px; height: 150px; top: 60%; left: 80%;
+            animation-delay: 2s; animation-duration: 25s;
         }
-
         .floating-element:nth-child(3) {
-            width: 70px;
-            height: 70px;
-            top: 80%;
-            left: 20%;
-            animation-delay: 4s;
-            animation-duration: 15s;
+            width: 70px; height: 70px; top: 80%; left: 20%;
+            animation-delay: 4s; animation-duration: 15s;
         }
-
         .floating-element:nth-child(4) {
-            width: 120px;
-            height: 120px;
-            top: 30%;
-            left: 70%;
-            animation-delay: 6s;
-            animation-duration: 30s;
+            width: 120px; height: 120px; top: 30%; left: 70%;
+            animation-delay: 6s; animation-duration: 30s;
         }
 
         @keyframes float {
-            0% {
-                transform: translateY(0) rotate(0deg);
-                opacity: 0.7;
-            }
-            50% {
-                transform: translateY(-100px) rotate(180deg);
-                opacity: 0.3;
-            }
-            100% {
-                transform: translateY(0) rotate(360deg);
-                opacity: 0.7;
-            }
+            0% { transform: translateY(0) rotate(0deg); opacity: 0.7; }
+            50% { transform: translateY(-100px) rotate(180deg); opacity: 0.3; }
+            100% { transform: translateY(0) rotate(360deg); opacity: 0.7; }
         }
 
         .hero-content {
@@ -215,14 +178,8 @@
         }
 
         @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .hero-title {
@@ -237,14 +194,8 @@
         }
 
         @keyframes titlePulse {
-            0% {
-                transform: scale(1);
-                text-shadow: 0 10px 30px rgba(234, 67, 67, 0.3);
-            }
-            100% {
-                transform: scale(1.02);
-                text-shadow: 0 15px 40px rgba(234, 67, 67, 0.5);
-            }
+            0% { transform: scale(1); text-shadow: 0 10px 30px rgba(234, 67, 67, 0.3); }
+            100% { transform: scale(1.02); text-shadow: 0 15px 40px rgba(234, 67, 67, 0.5); }
         }
 
         .hero-subtitle {
@@ -256,12 +207,8 @@
         }
 
         @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 0.9;
-            }
+            from { opacity: 0; }
+            to { opacity: 0.9; }
         }
 
         .hero-stats {
@@ -311,14 +258,8 @@
         }
 
         @keyframes countUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .stat-label {
@@ -346,6 +287,7 @@
             display: inline-block;
             position: relative;
             overflow: hidden;
+            text-align: center;
         }
 
         .btn::before {
@@ -433,17 +375,17 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             position: relative;
-            display: inline-block;
-            left: 50%;
-            transform: translateX(-50%);
+            display: block;
+            width: 100%;
         }
 
         .section-title::after {
             content: '';
             position: absolute;
             bottom: -10px;
-            left: 0;
-            width: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
             height: 3px;
             background: linear-gradient(45deg, #ea6767, #a22b2b);
             border-radius: 3px;
@@ -453,7 +395,7 @@
         }
 
         .section-title.visible::after {
-            transform: scaleX(1);
+            transform: translateX(-50%) scaleX(1);
         }
 
         .features-grid {
@@ -508,12 +450,8 @@
         }
 
         @keyframes iconFloat {
-            0%, 100% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-10px);
-            }
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
         }
 
         .feature-title {
@@ -554,9 +492,9 @@
             transition: all 0.3s ease;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
             position: relative;
             overflow: hidden;
+            min-height: 280px;
         }
 
         .faction-card::after {
@@ -609,69 +547,15 @@
             opacity: 0.9;
             line-height: 1.5;
             margin-bottom: 1.5rem;
+            flex-grow: 1;
         }
 
-        /* Server Info */
-        .server-info {
-            padding: 6rem 0;
-            background: rgba(255, 255, 255, 0.02);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .server-info::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(circle at 70% 30%, rgba(234, 67, 67, 0.05) 0%, transparent 50%);
-            pointer-events: none;
-        }
-
-        .info-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-        }
-
-        .info-card {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 2rem;
-            border-radius: 15px;
+        .faction-card .btn {
+            margin-top: auto;
+            width: 100%;
             text-align: center;
-            border-left: 4px solid #ea6767;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .info-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, rgba(234, 67, 67, 0.1) 0%, transparent 70%);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .info-card:hover::before {
-            opacity: 1;
-        }
-
-        .info-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(234, 67, 67, 0.2);
-        }
-
-        .info-title {
-            color: #ea6767;
-            margin-bottom: 1rem;
-            font-size: 1.2rem;
+            pointer-events: none;
+            opacity: 0.7;
         }
 
         /* Staff Section */
@@ -707,6 +591,10 @@
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 320px;
         }
 
         .staff-card::after {
@@ -743,81 +631,10 @@
             font-size: 1.3rem;
         }
 
-        /* Marketplace Section */
-        .marketplace-section {
-            padding: 6rem 0;
-            background: rgba(255, 255, 255, 0.02);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .marketplace-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(circle at 10% 10%, rgba(234, 67, 67, 0.05) 0%, transparent 50%),
-                        radial-gradient(circle at 90% 90%, rgba(234, 67, 67, 0.05) 0%, transparent 50%);
-            pointer-events: none;
-        }
-
-        .marketplace-card {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 3rem;
-            border-radius: 20px;
-            text-align: center;
-            border: 2px solid rgba(234, 67, 67, 0.3);
-            max-width: 600px;
-            margin: 0 auto;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .marketplace-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, rgba(234, 67, 67, 0.1) 0%, transparent 50%);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .marketplace-card:hover::before {
-            opacity: 1;
-        }
-
-        .marketplace-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(234, 67, 67, 0.3);
-            border-color: rgba(234, 67, 67, 0.5);
-        }
-
-        .marketplace-icon {
-            font-size: 4rem;
-            margin-bottom: 1.5rem;
-            background: linear-gradient(45deg, #ea6767, #a22b2b);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            display: inline-block;
-            animation: iconFloat 3s infinite ease-in-out;
-        }
-
-        .marketplace-title {
-            color: #ea6767;
-            margin-bottom: 1rem;
-            font-size: 2rem;
-        }
-
-        .marketplace-description {
-            margin-bottom: 2rem;
-            font-size: 1.1rem;
-            opacity: 0.9;
+        .staff-card .btn {
+            margin-top: auto;
+            width: 100%;
+            max-width: 200px;
         }
 
         /* Support Links */
@@ -888,189 +705,6 @@
             flex-grow: 1;
             opacity: 0.9;
             font-size: 0.95rem;
-        }
-
-        /* Rules */
-        .rules {
-            padding: 6rem 0;
-            background: rgba(255, 255, 255, 0.02);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .rules::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(circle at 80% 20%, rgba(234, 67, 67, 0.03) 0%, transparent 50%);
-            pointer-events: none;
-        }
-
-        .rules-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-            margin-bottom: 3rem;
-        }
-
-        .rule-category {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 2rem;
-            border-radius: 15px;
-            border-top: 4px solid #ea6767;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .rule-category::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, rgba(234, 67, 67, 0.1) 0%, transparent 70%);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .rule-category:hover::before {
-            opacity: 1;
-        }
-
-        .rule-category:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(234, 67, 67, 0.2);
-        }
-
-        .category-title {
-            color: #ea6767;
-            margin-bottom: 1.5rem;
-            font-size: 1.3rem;
-        }
-
-        .rule-list {
-            list-style: none;
-        }
-
-        .rule-list li {
-            margin-bottom: 0.8rem;
-            padding-left: 1.5rem;
-            position: relative;
-            transition: all 0.3s ease;
-        }
-
-        .rule-list li:hover {
-            transform: translateX(5px);
-        }
-
-        .rule-list li::before {
-            content: '•';
-            color: #ea6767;
-            position: absolute;
-            left: 0;
-            font-size: 1.5rem;
-            line-height: 1;
-        }
-
-        .full-rules-links {
-            text-align: center;
-            margin-top: 3rem;
-        }
-
-        .rules-buttons {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-top: 1rem;
-        }
-
-        /* Footer */
-        .footer {
-            background: rgba(0, 0, 0, 0.9);
-            padding: 3rem 0 1rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .footer::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(circle at 50% 0%, rgba(234, 67, 67, 0.05) 0%, transparent 70%);
-            pointer-events: none;
-        }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-bottom: 2rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        .footer-section h4 {
-            color: #ea6767;
-            margin-bottom: 1rem;
-            position: relative;
-            display: inline-block;
-        }
-
-        .footer-section h4::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 50%;
-            height: 2px;
-            background: #ea6767;
-            transition: width 0.3s ease;
-        }
-
-        .footer-section:hover h4::after {
-            width: 100%;
-        }
-
-        .footer-links {
-            list-style: none;
-        }
-
-        .footer-links li {
-            margin-bottom: 0.5rem;
-            transition: all 0.3s ease;
-        }
-
-        .footer-links li:hover {
-            transform: translateX(5px);
-        }
-
-        .footer-links a {
-            color: rgba(255, 255, 255, 0.7);
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .footer-links a:hover {
-            color: #ea6767;
-        }
-
-        .footer-bottom {
-            text-align: center;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: rgba(255, 255, 255, 0.5);
-            position: relative;
-            z-index: 1;
         }
 
         /* Particle Animation */
@@ -1155,14 +789,12 @@
                 min-height: 180px;
             }
             
-            .rules-buttons {
-                flex-direction: column;
-                align-items: center;
+            .faction-card {
+                min-height: 250px;
             }
             
-            .rules-buttons .btn {
-                width: 100%;
-                max-width: 300px;
+            .staff-card {
+                min-height: 280px;
             }
             
             .floating-element {
@@ -1275,85 +907,43 @@
                 <div class="faction-card fade-in">
                     <h3 class="faction-name">ГТРК</h3>
                     <p class="faction-description">Государственная Телерадиокомпания. Создавайте новости, ведите репортажи и освещайте события города. Место для творческих личностей.</p>
-                    <a href="https://discord.gg/S7zrHQbnq2" class="btn btn-primary" target="_blank">Присоединиться</a>
+                    <div class="btn btn-primary">Присоединиться</div>
                 </div>
                 <div class="faction-card fade-in">
                     <h3 class="faction-name">Правительство</h3>
                     <p class="faction-description">Принимайте важные решения, формируйте законы и управляйте развитием города. Ответственность и стратегическое мышление.</p>
-                    <a href="https://discord.gg/rDwWX3Ta9H" class="btn btn-primary" target="_blank">Присоединиться</a>
+                    <div class="btn btn-primary">Присоединиться</div>
                 </div>
                 <div class="faction-card fade-in">
                     <h3 class="faction-name">Верховный Суд</h3>
                     <p class="faction-description">Соблюдайте порядок, закон и справедливость. Выносите вердикты и поддерживайте правопорядок в обществе.</p>
-                    <a href="https://discord.gg/8UsHAPK5TX" class="btn btn-primary" target="_blank">Присоединиться</a>
+                    <div class="btn btn-primary">Присоединиться</div>
                 </div>
                 <div class="faction-card fade-in">
                     <h3 class="faction-name">Росгвардия</h3>
                     <p class="faction-description">Стоите на защите порядка и безопасности граждан. Быстрое реагирование и поддержание общественного спокойствия.</p>
-                    <a href="https://discord.gg/YWAggsZKpc" class="btn btn-primary" target="_blank">Присоединиться</a>
+                    <div class="btn btn-primary">Присоединиться</div>
                 </div>
                 <div class="faction-card fade-in">
                     <h3 class="faction-name">ОПГ "Карма"</h3>
                     <p class="faction-description">Криминальная группировка, где ценятся верность, сила и братство. Теневая экономика и свои законы.</p>
-                    <a href="https://discord.gg/cJqazcB98b" class="btn btn-primary" target="_blank">Присоединиться</a>
+                    <div class="btn btn-primary">Присоединиться</div>
                 </div>
                 <div class="faction-card fade-in">
                     <h3 class="faction-name">Федеральная Служба Безопасности</h3>
                     <p class="faction-description">Обеспечение национальной безопасности, борьба с терроризмом и шпионажем. Элита правоохранительной системы.</p>
-                    <a href="https://discord.gg/abhVDQm2Qa" class="btn btn-primary" target="_blank">Присоединиться</a>
+                    <div class="btn btn-primary">Присоединиться</div>
                 </div>
                 <div class="faction-card fade-in">
                     <h3 class="faction-name">Министерство Внутренних Дел</h3>
                     <p class="faction-description">Обеспечение общественного порядка, борьба с преступностью и защита прав граждан. Патрулирование улиц и расследование преступлений.</p>
-                    <a href="https://discord.gg/XZcd357s8v" class="btn btn-primary" target="_blank">Присоединиться</a>
+                    <div class="btn btn-primary">Присоединиться</div>
                 </div>
                 <div class="faction-card fade-in">
                     <h3 class="faction-name">Прокуратура</h3>
                     <p class="faction-description">Надзор за соблюдением законов, поддержание государственного обвинения в суде и защита прав граждан.</p>
-                    <a href="https://discord.gg/eN4FMD5eAk" class="btn btn-primary" target="_blank">Присоединиться</a>
+                    <div class="btn btn-primary">Присоединиться</div>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Server Info -->
-    <section id="server" class="server-info">
-        <div class="container">
-            <h2 class="section-title fade-in">О нашем сервере</h2>
-            <div class="info-grid">
-                <div class="info-card fade-in">
-                    <h3 class="info-title">🎮 Платформа</h3>
-                    <p>Сервер работает на платформе Roblox с оптимизированным геймплеем</p>
-                </div>
-                <div class="info-card fade-in">
-                    <h3 class="info-title">👥 Сообщество</h3>
-                    <p>Активное и дружелюбное сообщество с ежедневными ивентами</p>
-                </div>
-                <div class="info-card fade-in">
-                    <h3 class="info-title">🏙️ Локация</h3>
-                    <p>Город Хамбург с реалистичной картой и инфраструктурой</p>
-                </div>
-                <div class="info-card fade-in">
-                    <h3 class="info-title">💬 Поддержка</h3>
-                    <p>Круглосуточная техническая поддержка и помощь администрации</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Marketplace Section -->
-    <section id="marketplace" class="marketplace-section">
-        <div class="container">
-            <div class="marketplace-card fade-in">
-                <div class="marketplace-icon">🏪</div>
-                <h2 class="marketplace-title">Торговая площадка бизнесов</h2>
-                <p class="marketplace-description">
-                    Приобретай готовые бизнесы и становись успешным предпринимателем в Хамбурге. 
-                    От маленьких ларьков до крупных корпораций - найди свой путь к успеху!
-                </p>
-                <a href="https://krasnodar-rp-business.github.io/krasnodar-rp-business/" class="btn btn-primary" target="_blank">
-                    Перейти к покупке бизнесов
-                </a>
             </div>
         </div>
     </section>
@@ -1367,7 +957,7 @@
                     <div class="staff-icon">🛡️</div>
                     <h3 class="staff-title">Игровая администрация</h3>
                     <p>Стань частью команды модераторов и администраторов сервера</p>
-                    <a href="https://discord.com/channels/1108341758590472293/1407784863406227498" class="btn btn-primary" target="_blank" style="margin-top: 1rem;">
+                    <a href="https://discord.gg/RjEPpTtxjQ" class="btn btn-primary" target="_blank">
                         Подать заявление
                     </a>
                 </div>
@@ -1375,7 +965,7 @@
                     <div class="staff-icon">💬</div>
                     <h3 class="staff-title">Discord модерация</h3>
                     <p>Помогай поддерживать порядок и активность в нашем Discord сообществе</p>
-                    <a href="https://discord.com/channels/1108341758590472293/1411727217142272132" class="btn btn-primary" target="_blank" style="margin-top: 1rem;">
+                    <a href="https://discord.gg/RjEPpTtxjQ" class="btn btn-primary" target="_blank">
                         Подать заявку
                     </a>
                 </div>
@@ -1385,13 +975,12 @@
             <div class="support-links">
                 <h3 class="section-title fade-in" style="font-size: 2rem;">📞 Поддержка и жалобы</h3>
                 
-                <!-- Все карточки жалоб в одной сетке по 2 в ряд -->
                 <div class="support-grid">
                     <div class="support-card fade-in">
                         <div class="support-icon">❓</div>
                         <h3 class="support-title">Вопросы персоналу</h3>
                         <p class="support-description">Задайте вопросы команде проекта</p>
-                        <a href="https://discord.com/channels/1108341758590472293/1411075288322019459" class="btn btn-secondary" target="_blank">
+                        <a href="https://discord.gg/RjEPpTtxjQ" class="btn btn-secondary" target="_blank">
                             Перейти
                         </a>
                     </div>
@@ -1399,7 +988,7 @@
                         <div class="support-icon">💬</div>
                         <h3 class="support-title">Жалоба на пользователя Discord</h3>
                         <p class="support-description">Пожаловаться на нарушение в Discord</p>
-                        <a href="https://discord.com/channels/1108341758590472293/1410640314070470676" class="btn btn-secondary" target="_blank">
+                        <a href="https://discord.gg/RjEPpTtxjQ" class="btn btn-secondary" target="_blank">
                             Подать жалобу
                         </a>
                     </div>
@@ -1407,7 +996,7 @@
                         <div class="support-icon">🚫</div>
                         <h3 class="support-title">Жалоба на игрока</h3>
                         <p class="support-description">Пожаловаться на нарушение игровых правил</p>
-                        <a href="https://discord.com/channels/1108341758590472293/1410552502583165031" class="btn btn-secondary" target="_blank">
+                        <a href="https://discord.gg/RjEPpTtxjQ" class="btn btn-secondary" target="_blank">
                             Подать жалобу
                         </a>
                     </div>
@@ -1415,7 +1004,7 @@
                         <div class="support-icon">👨‍💼</div>
                         <h3 class="support-title">Жалоба на персонал</h3>
                         <p class="support-description">Пожаловаться на действия администрации</p>
-                        <a href="https://discord.com/channels/1108341758590472293/1410564346437828669" class="btn btn-secondary" target="_blank">
+                        <a href="https://discord.gg/RjEPpTtxjQ" class="btn btn-secondary" target="_blank">
                             Подать жалобу
                         </a>
                     </div>
@@ -1423,7 +1012,7 @@
                         <div class="support-icon">👑</div>
                         <h3 class="support-title">Жалоба на лидера фракции</h3>
                         <p class="support-description">Пожаловаться на действия лидера фракции</p>
-                        <a href="https://discord.com/channels/1108341758590472293/1410640570216349716" class="btn btn-secondary" target="_blank">
+                        <a href="https://discord.gg/RjEPpTtxjQ" class="btn btn-secondary" target="_blank">
                             Подать жалобу
                         </a>
                     </div>
@@ -1431,7 +1020,7 @@
                         <div class="support-icon">📝</div>
                         <h3 class="support-title">Другая жалоба</h3>
                         <p class="support-description">Для других типов жалоб и обращений</p>
-                        <a href="https://discord.com/channels/1108341758590472293/1410640570216349716" class="btn btn-secondary" target="_blank">
+                        <a href="https://discord.gg/RjEPpTtxjQ" class="btn btn-secondary" target="_blank">
                             Подать обращение
                         </a>
                     </div>
@@ -1439,89 +1028,6 @@
             </div>
         </div>
     </section>
-
-    <!-- Rules -->
-    <section id="rules" class="rules">
-        <div class="container">
-            <h2 class="section-title fade-in">Основные правила</h2>
-            <div class="rules-content">
-                <div class="rule-category fade-in">
-                    <h3 class="category-title">🎭 Ролевая игра</h3>
-                    <ul class="rule-list">
-                        <li>Соблюдайте реализм персонажа</li>
-                        <li>Избегайте метагейминга</li>
-                        <li>Уважайте чужой RolePlay</li>
-                        <li>Следуйте сценарию ситуации</li>
-                    </ul>
-                </div>
-                <div class="rule-category fade-in">
-                    <h3 class="category-title">⚔️ PvP взаимодействия</h3>
-                    <ul class="rule-list">
-                        <li>Запрещен RDM (Random Deathmatch)</li>
-                        <li>Только обоснованные конфликты</li>
-                        <li>Соблюдайте правила ведения боя</li>
-                        <li>Уважайте право на жизнь персонажа</li>
-                    </ul>
-                </div>
-                <div class="rule-category fade-in">
-                    <h3 class="category-title">💼 Экономика и бизнес</h3>
-                    <ul class="rule-list">
-                        <li>Честная конкуренция</li>
-                        <li>Соблюдение налогового законодательства</li>
-                        <li>Запрещен нереалистичный ценообразование</li>
-                        <li>Уважение к частной собственности</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="full-rules-links">
-                <h3 style="color: #ea6767; margin-bottom: 1rem;">📚 Полные правила проекта</h3>
-                <div class="rules-buttons">
-                    <a href="https://discord.com/channels/1108341758590472293/1384146108938326076" class="btn btn-primary" target="_blank">
-                        📋 Discord правила
-                    </a>
-                    <a href="https://discord.com/channels/1108341758590472293/1385511548751056906" class="btn btn-primary" target="_blank">
-                        🎮 Игровые правила
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h4>KRASNODAR RP</h4>
-                    <p>Сервер реалистичной ролевой игры в Roblox Hamburg. Присоединяйся к нашему сообществу!</p>
-                </div>
-                <div class="footer-section">
-                    <h4>Быстрые ссылки</h4>
-                    <ul class="footer-links">
-                        <li><a href="#">Главная</a></li>
-                        <li><a href="#features">Особенности</a></li>
-                        <li><a href="#factions">Фракции</a></li>
-                        <li><a href="#marketplace">Бизнесы</a></li>
-                        <li><a href="#staff">В команду</a></li>
-                        <li><a href="#rules">Правила</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>Сообщество</h4>
-                    <ul class="footer-links">
-                        <li><a href="https://www.roblox.com/games/start?placeId=7711635737&launchData=joinCode%3Dyebxnxxi" target="_blank">Играть на сервере</a></li>
-                        <li><a href="https://krasnodar-rp-business.github.io/krasnodar-rp-business/" target="_blank">Купить бизнес</a></li>
-                        <li><a href="https://discord.gg/RjEPpTtxjQ" target="_blank">Discord сервер</a></li>
-                        <li><a href="https://discord.com/channels/1108341758590472293/1384146214102241384" target="_blank">💎 Донат</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 KRASNODAR RolePlay. Все права защищены.</p>
-            </div>
-        </div>
-    </footer>
 
     <script>
         // Плавная прокрутка для навигации
@@ -1587,7 +1093,6 @@
                 const particle = document.createElement('div');
                 particle.classList.add('particle');
                 
-                // Случайные размеры и позиции
                 const size = Math.random() * 5 + 2;
                 const posX = Math.random() * 100;
                 const delay = Math.random() * 20;
@@ -1603,15 +1108,7 @@
             }
         }
 
-        // Инициализация частиц при загрузке страницы
         window.addEventListener('load', createParticles);
-
-        // Анимация логотипа при скролле
-        window.addEventListener('scroll', function() {
-            const scrolled = window.pageYOffset;
-            const rate = scrolled * -0.5;
-            document.querySelector('.logo h1').style.transform = `translateY(${rate}px)`;
-        });
     </script>
 </body>
 </html>
