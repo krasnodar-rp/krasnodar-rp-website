@@ -13,7 +13,7 @@
 
         body {
             font-family: 'Arial', sans-serif;
-            background: linear-gradient(135deg, #0c0c0c 0%, #1a1a2e 50%, #16213e 100%);
+            background: linear-gradient(135deg, #0c0c0c 0%, #1a0a0a 50%, #2e0f0f 100%);
             color: #fff;
             line-height: 1.6;
             overflow-x: hidden;
@@ -33,7 +33,14 @@
             width: 100%;
             top: 0;
             z-index: 1000;
-            border-bottom: 1px solid rgba(102, 126, 234, 0.3);
+            border-bottom: 1px solid rgba(234, 67, 67, 0.3);
+            transition: all 0.5s ease;
+        }
+
+        .header.scrolled {
+            background: rgba(0, 0, 0, 0.98);
+            padding: 0.5rem 0;
+            box-shadow: 0 5px 20px rgba(234, 67, 67, 0.2);
         }
 
         .header .container {
@@ -41,14 +48,25 @@
             justify-content: space-between;
             align-items: center;
             padding: 1rem 20px;
+            transition: all 0.3s ease;
         }
 
         .logo h1 {
             font-size: 1.5rem;
             font-weight: 700;
-            background: linear-gradient(45deg, #667eea, #764ba2);
+            background: linear-gradient(45deg, #ea6767, #a22b2b);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            animation: logoGlow 3s infinite alternate;
+        }
+
+        @keyframes logoGlow {
+            0% {
+                text-shadow: 0 0 5px rgba(234, 67, 67, 0.5);
+            }
+            100% {
+                text-shadow: 0 0 15px rgba(234, 67, 67, 0.8), 0 0 20px rgba(234, 67, 67, 0.6);
+            }
         }
 
         .nav {
@@ -63,11 +81,30 @@
             transition: all 0.3s ease;
             padding: 0.5rem 1rem;
             border-radius: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(234, 67, 67, 0.4), transparent);
+            transition: left 0.5s;
+        }
+
+        .nav-link:hover::before {
+            left: 100%;
         }
 
         .nav-link:hover, .nav-link.active {
-            background: linear-gradient(45deg, #667eea, #764ba2);
+            background: linear-gradient(45deg, #ea6767, #a22b2b);
             color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(234, 67, 67, 0.4);
         }
 
         /* Hero Section */
@@ -77,7 +114,7 @@
             align-items: center;
             justify-content: center;
             text-align: center;
-            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+            background: linear-gradient(135deg, rgba(234, 67, 67, 0.1) 0%, rgba(162, 43, 43, 0.1) 100%);
             position: relative;
             overflow: hidden;
         }
@@ -89,23 +126,125 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><polygon fill="%23667eea" fill-opacity="0.05" points="0,1000 1000,0 1000,1000"/></svg>');
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><polygon fill="%23ea6767" fill-opacity="0.05" points="0,1000 1000,0 1000,1000"/></svg>');
             background-size: cover;
+            animation: backgroundMove 20s infinite linear;
+        }
+
+        @keyframes backgroundMove {
+            0% {
+                transform: translateY(0) translateX(0);
+            }
+            100% {
+                transform: translateY(-50px) translateX(-50px);
+            }
+        }
+
+        .floating-elements {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .floating-element {
+            position: absolute;
+            background: rgba(234, 67, 67, 0.1);
+            border-radius: 50%;
+            animation: float 15s infinite linear;
+        }
+
+        .floating-element:nth-child(1) {
+            width: 100px;
+            height: 100px;
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+            animation-duration: 20s;
+        }
+
+        .floating-element:nth-child(2) {
+            width: 150px;
+            height: 150px;
+            top: 60%;
+            left: 80%;
+            animation-delay: 2s;
+            animation-duration: 25s;
+        }
+
+        .floating-element:nth-child(3) {
+            width: 70px;
+            height: 70px;
+            top: 80%;
+            left: 20%;
+            animation-delay: 4s;
+            animation-duration: 15s;
+        }
+
+        .floating-element:nth-child(4) {
+            width: 120px;
+            height: 120px;
+            top: 30%;
+            left: 70%;
+            animation-delay: 6s;
+            animation-duration: 30s;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0.7;
+            }
+            50% {
+                transform: translateY(-100px) rotate(180deg);
+                opacity: 0.3;
+            }
+            100% {
+                transform: translateY(0) rotate(360deg);
+                opacity: 0.7;
+            }
         }
 
         .hero-content {
             position: relative;
             z-index: 2;
+            animation: fadeInUp 1.5s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .hero-title {
             font-size: 4rem;
             font-weight: 700;
             margin-bottom: 1rem;
-            background: linear-gradient(45deg, #fff, #667eea);
+            background: linear-gradient(45deg, #fff, #ea6767);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            text-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+            text-shadow: 0 10px 30px rgba(234, 67, 67, 0.3);
+            animation: titlePulse 3s infinite alternate;
+        }
+
+        @keyframes titlePulse {
+            0% {
+                transform: scale(1);
+                text-shadow: 0 10px 30px rgba(234, 67, 67, 0.3);
+            }
+            100% {
+                transform: scale(1.02);
+                text-shadow: 0 15px 40px rgba(234, 67, 67, 0.5);
+            }
         }
 
         .hero-subtitle {
@@ -113,6 +252,16 @@
             opacity: 0.9;
             margin-bottom: 2rem;
             font-weight: 300;
+            animation: fadeIn 2s ease-out 0.5s both;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 0.9;
+            }
         }
 
         .hero-stats {
@@ -121,19 +270,55 @@
             gap: 3rem;
             margin-bottom: 3rem;
             flex-wrap: wrap;
+            animation: fadeIn 2s ease-out 1s both;
         }
 
         .hero-stat {
             text-align: center;
+            position: relative;
+            padding: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .hero-stat:hover {
+            transform: translateY(-10px);
+        }
+
+        .hero-stat::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background: linear-gradient(45deg, #ea6767, #a22b2b);
+            transition: width 0.3s ease;
+        }
+
+        .hero-stat:hover::after {
+            width: 80%;
         }
 
         .stat-number {
             font-size: 2.5rem;
             font-weight: 700;
-            background: linear-gradient(45deg, #667eea, #764ba2);
+            background: linear-gradient(45deg, #ea6767, #a22b2b);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             display: block;
+            animation: countUp 2s ease-out;
+        }
+
+        @keyframes countUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .stat-label {
@@ -146,6 +331,7 @@
             gap: 1rem;
             justify-content: center;
             flex-wrap: wrap;
+            animation: fadeIn 2s ease-out 1.5s both;
         }
 
         .btn {
@@ -158,16 +344,33 @@
             cursor: pointer;
             font-size: 1rem;
             display: inline-block;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
         }
 
         .btn-primary {
-            background: linear-gradient(45deg, #667eea, #764ba2);
+            background: linear-gradient(45deg, #ea6767, #a22b2b);
             color: white;
         }
 
         .btn-primary:hover {
             transform: translateY(-3px);
-            box-shadow: 0 15px 30px rgba(102, 126, 234, 0.4);
+            box-shadow: 0 15px 30px rgba(234, 67, 67, 0.4);
         }
 
         .btn-secondary {
@@ -206,15 +409,51 @@
         .features {
             padding: 6rem 0;
             background: rgba(255, 255, 255, 0.02);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .features::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 80%, rgba(234, 67, 67, 0.05) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 20%, rgba(234, 67, 67, 0.05) 0%, transparent 50%);
+            pointer-events: none;
         }
 
         .section-title {
             text-align: center;
             font-size: 2.5rem;
             margin-bottom: 3rem;
-            background: linear-gradient(45deg, #667eea, #764ba2);
+            background: linear-gradient(45deg, #ea6767, #a22b2b);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(45deg, #ea6767, #a22b2b);
+            border-radius: 3px;
+            transform: scaleX(0);
+            transform-origin: center;
+            transition: transform 0.5s ease;
+        }
+
+        .section-title.visible::after {
+            transform: scaleX(1);
         }
 
         .features-grid {
@@ -231,31 +470,74 @@
             padding: 2rem;
             text-align: center;
             transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(45deg, #ea6767, #a22b2b);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover::before {
+            transform: scaleX(1);
         }
 
         .feature-card:hover {
             transform: translateY(-10px);
-            border-color: #667eea;
-            box-shadow: 0 20px 40px rgba(102, 126, 234, 0.2);
+            border-color: #ea6767;
+            box-shadow: 0 20px 40px rgba(234, 67, 67, 0.2);
         }
 
         .feature-icon {
             font-size: 3rem;
             margin-bottom: 1rem;
-            background: linear-gradient(45deg, #667eea, #764ba2);
+            background: linear-gradient(45deg, #ea6767, #a22b2b);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            display: inline-block;
+            animation: iconFloat 3s infinite ease-in-out;
+        }
+
+        @keyframes iconFloat {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
         }
 
         .feature-title {
             font-size: 1.3rem;
             margin-bottom: 1rem;
-            color: #667eea;
+            color: #ea6767;
         }
 
         /* Factions Section */
         .factions {
             padding: 6rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .factions::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 30%, rgba(234, 67, 67, 0.03) 0%, transparent 50%);
+            pointer-events: none;
         }
 
         .factions-grid {
@@ -268,31 +550,84 @@
             background: rgba(255, 255, 255, 0.05);
             padding: 2rem;
             border-radius: 15px;
-            border-left: 4px solid #667eea;
+            border-left: 4px solid #ea6767;
             transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .faction-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(234, 67, 67, 0.1) 0%, transparent 50%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .faction-card:hover::after {
+            opacity: 1;
         }
 
         .faction-card:hover {
             transform: translateY(-5px);
-            border-color: #764ba2;
+            border-color: #a22b2b;
+            box-shadow: 0 10px 20px rgba(234, 67, 67, 0.2);
         }
 
         .faction-name {
-            color: #667eea;
+            color: #ea6767;
             margin-bottom: 1rem;
             font-size: 1.3rem;
             font-weight: 600;
+            position: relative;
+            display: inline-block;
+        }
+
+        .faction-name::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #ea6767;
+            transition: width 0.3s ease;
+        }
+
+        .faction-card:hover .faction-name::after {
+            width: 100%;
         }
 
         .faction-description {
             opacity: 0.9;
             line-height: 1.5;
+            margin-bottom: 1.5rem;
         }
 
         /* Server Info */
         .server-info {
             padding: 6rem 0;
             background: rgba(255, 255, 255, 0.02);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .server-info::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 70% 30%, rgba(234, 67, 67, 0.05) 0%, transparent 50%);
+            pointer-events: none;
         }
 
         .info-grid {
@@ -306,11 +641,35 @@
             padding: 2rem;
             border-radius: 15px;
             text-align: center;
-            border-left: 4px solid #667eea;
+            border-left: 4px solid #ea6767;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .info-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(234, 67, 67, 0.1) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .info-card:hover::before {
+            opacity: 1;
+        }
+
+        .info-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(234, 67, 67, 0.2);
         }
 
         .info-title {
-            color: #667eea;
+            color: #ea6767;
             margin-bottom: 1rem;
             font-size: 1.2rem;
         }
@@ -318,6 +677,19 @@
         /* Staff Section */
         .staff {
             padding: 6rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .staff::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 50% 50%, rgba(234, 67, 67, 0.03) 0%, transparent 70%);
+            pointer-events: none;
         }
 
         .staff-grid {
@@ -331,16 +703,42 @@
             padding: 2rem;
             border-radius: 15px;
             text-align: center;
-            border-top: 4px solid #667eea;
+            border-top: 4px solid #ea6767;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .staff-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(234, 67, 67, 0.1) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .staff-card:hover::after {
+            opacity: 1;
+        }
+
+        .staff-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(234, 67, 67, 0.2);
         }
 
         .staff-icon {
             font-size: 3rem;
             margin-bottom: 1rem;
+            display: inline-block;
+            animation: iconFloat 3s infinite ease-in-out;
         }
 
         .staff-title {
-            color: #667eea;
+            color: #ea6767;
             margin-bottom: 1rem;
             font-size: 1.3rem;
         }
@@ -349,6 +747,20 @@
         .marketplace-section {
             padding: 6rem 0;
             background: rgba(255, 255, 255, 0.02);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .marketplace-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 10% 10%, rgba(234, 67, 67, 0.05) 0%, transparent 50%),
+                        radial-gradient(circle at 90% 90%, rgba(234, 67, 67, 0.05) 0%, transparent 50%);
+            pointer-events: none;
         }
 
         .marketplace-card {
@@ -356,21 +768,48 @@
             padding: 3rem;
             border-radius: 20px;
             text-align: center;
-            border: 2px solid rgba(102, 126, 234, 0.3);
+            border: 2px solid rgba(234, 67, 67, 0.3);
             max-width: 600px;
             margin: 0 auto;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .marketplace-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(234, 67, 67, 0.1) 0%, transparent 50%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .marketplace-card:hover::before {
+            opacity: 1;
+        }
+
+        .marketplace-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(234, 67, 67, 0.3);
+            border-color: rgba(234, 67, 67, 0.5);
         }
 
         .marketplace-icon {
             font-size: 4rem;
             margin-bottom: 1.5rem;
-            background: linear-gradient(45deg, #667eea, #764ba2);
+            background: linear-gradient(45deg, #ea6767, #a22b2b);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            display: inline-block;
+            animation: iconFloat 3s infinite ease-in-out;
         }
 
         .marketplace-title {
-            color: #667eea;
+            color: #ea6767;
             margin-bottom: 1rem;
             font-size: 2rem;
         }
@@ -404,21 +843,41 @@
             flex-direction: column;
             justify-content: space-between;
             min-height: 200px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .support-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(234, 67, 67, 0.1) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .support-card:hover::before {
+            opacity: 1;
         }
 
         .support-card:hover {
             transform: translateY(-5px);
-            border-color: #667eea;
-            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.2);
+            border-color: #ea6767;
+            box-shadow: 0 10px 20px rgba(234, 67, 67, 0.2);
         }
 
         .support-icon {
             font-size: 2.5rem;
             margin-bottom: 1rem;
+            display: inline-block;
+            animation: iconFloat 3s infinite ease-in-out;
         }
 
         .support-title {
-            color: #667eea;
+            color: #ea6767;
             margin-bottom: 1rem;
             font-size: 1.2rem;
             font-weight: 600;
@@ -435,6 +894,19 @@
         .rules {
             padding: 6rem 0;
             background: rgba(255, 255, 255, 0.02);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .rules::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 80% 20%, rgba(234, 67, 67, 0.03) 0%, transparent 50%);
+            pointer-events: none;
         }
 
         .rules-content {
@@ -448,11 +920,35 @@
             background: rgba(255, 255, 255, 0.05);
             padding: 2rem;
             border-radius: 15px;
-            border-top: 4px solid #667eea;
+            border-top: 4px solid #ea6767;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .rule-category::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(234, 67, 67, 0.1) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .rule-category:hover::before {
+            opacity: 1;
+        }
+
+        .rule-category:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(234, 67, 67, 0.2);
         }
 
         .category-title {
-            color: #667eea;
+            color: #ea6767;
             margin-bottom: 1.5rem;
             font-size: 1.3rem;
         }
@@ -465,13 +961,20 @@
             margin-bottom: 0.8rem;
             padding-left: 1.5rem;
             position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .rule-list li:hover {
+            transform: translateX(5px);
         }
 
         .rule-list li::before {
             content: '•';
-            color: #667eea;
+            color: #ea6767;
             position: absolute;
             left: 0;
+            font-size: 1.5rem;
+            line-height: 1;
         }
 
         .full-rules-links {
@@ -492,6 +995,19 @@
             background: rgba(0, 0, 0, 0.9);
             padding: 3rem 0 1rem;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 50% 0%, rgba(234, 67, 67, 0.05) 0%, transparent 70%);
+            pointer-events: none;
         }
 
         .footer-content {
@@ -499,11 +1015,30 @@
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 2rem;
             margin-bottom: 2rem;
+            position: relative;
+            z-index: 1;
         }
 
         .footer-section h4 {
-            color: #667eea;
+            color: #ea6767;
             margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .footer-section h4::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 50%;
+            height: 2px;
+            background: #ea6767;
+            transition: width 0.3s ease;
+        }
+
+        .footer-section:hover h4::after {
+            width: 100%;
         }
 
         .footer-links {
@@ -512,6 +1047,11 @@
 
         .footer-links li {
             margin-bottom: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .footer-links li:hover {
+            transform: translateX(5px);
         }
 
         .footer-links a {
@@ -521,7 +1061,7 @@
         }
 
         .footer-links a:hover {
-            color: #667eea;
+            color: #ea6767;
         }
 
         .footer-bottom {
@@ -529,6 +1069,55 @@
             padding-top: 2rem;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             color: rgba(255, 255, 255, 0.5);
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Particle Animation */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .particle {
+            position: absolute;
+            background: rgba(234, 67, 67, 0.3);
+            border-radius: 50%;
+            animation: particleFloat 20s infinite linear;
+        }
+
+        @keyframes particleFloat {
+            0% {
+                transform: translateY(100vh) translateX(0) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) translateX(100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Scroll Animation */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         /* Responsive */
@@ -575,10 +1164,17 @@
                 width: 100%;
                 max-width: 300px;
             }
+            
+            .floating-element {
+                display: none;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- Particle Animation -->
+    <div class="particles" id="particles"></div>
+
     <!-- Header -->
     <header class="header">
         <div class="container">
@@ -598,6 +1194,12 @@
 
     <!-- Hero Section -->
     <section class="hero">
+        <div class="floating-elements">
+            <div class="floating-element"></div>
+            <div class="floating-element"></div>
+            <div class="floating-element"></div>
+            <div class="floating-element"></div>
+        </div>
         <div class="hero-content">
             <h1 class="hero-title">KRASNODAR ROLEPLAY</h1>
             <p class="hero-subtitle">Погрузись в мир реалистичной ролевой игры в Roblox Hamburg</p>
@@ -629,34 +1231,34 @@
     <!-- Features Section -->
     <section id="features" class="features">
         <div class="container">
-            <h2 class="section-title">Почему выбирают нас?</h2>
+            <h2 class="section-title fade-in">Почему выбирают нас?</h2>
             <div class="features-grid">
-                <div class="feature-card">
+                <div class="feature-card fade-in">
                     <div class="feature-icon">🏢</div>
                     <h3 class="feature-title">Реалистичная экономика</h3>
                     <p>Развитая система бизнесов, банковских операций и рыночных отношений</p>
                 </div>
-                <div class="feature-card">
+                <div class="feature-card fade-in">
                     <div class="feature-icon">👮</div>
                     <h3 class="feature-title">Проработанные фракции</h3>
                     <p>Правительство, правоохранительные органы и криминальные группировки</p>
                 </div>
-                <div class="feature-card">
+                <div class="feature-card fade-in">
                     <div class="feature-icon">🏠</div>
                     <h3 class="feature-title">Система недвижимости</h3>
                     <p>Покупайте, продавайте и арендуйте жилье и коммерческую недвижимость</p>
                 </div>
-                <div class="feature-card">
+                <div class="feature-card fade-in">
                     <div class="feature-icon">⚖️</div>
                     <h3 class="feature-title">Правовая система</h3>
                     <p>Верховный суд, законы и реальные правовые последствия действий</p>
                 </div>
-                <div class="feature-card">
+                <div class="feature-card fade-in">
                     <div class="feature-icon">🎥</div>
                     <h3 class="feature-title">Медиа пространство</h3>
                     <p>Государственная телерадиокомпания для освещения событий города</p>
                 </div>
-                <div class="feature-card">
+                <div class="feature-card fade-in">
                     <div class="feature-icon">🛡️</div>
                     <h3 class="feature-title">Безопасность</h3>
                     <p>ФСБ и Росгвардия обеспечивают порядок и национальную безопасность</p>
@@ -668,35 +1270,47 @@
     <!-- Factions Section -->
     <section id="factions" class="factions">
         <div class="container">
-            <h2 class="section-title">Наши фракции</h2>
+            <h2 class="section-title fade-in">Наши фракции</h2>
             <div class="factions-grid">
-                <div class="faction-card">
+                <div class="faction-card fade-in">
                     <h3 class="faction-name">ГТРК</h3>
                     <p class="faction-description">Государственная Телерадиокомпания. Создавайте новости, ведите репортажи и освещайте события города. Место для творческих личностей.</p>
+                    <a href="https://discord.gg/S7zrHQbnq2" class="btn btn-primary" target="_blank">Присоединиться</a>
                 </div>
-                <div class="faction-card">
+                <div class="faction-card fade-in">
                     <h3 class="faction-name">Правительство</h3>
                     <p class="faction-description">Принимайте важные решения, формируйте законы и управляйте развитием города. Ответственность и стратегическое мышление.</p>
+                    <a href="https://discord.gg/rDwWX3Ta9H" class="btn btn-primary" target="_blank">Присоединиться</a>
                 </div>
-                <div class="faction-card">
+                <div class="faction-card fade-in">
                     <h3 class="faction-name">Верховный Суд</h3>
                     <p class="faction-description">Соблюдайте порядок, закон и справедливость. Выносите вердикты и поддерживайте правопорядок в обществе.</p>
+                    <a href="https://discord.gg/8UsHAPK5TX" class="btn btn-primary" target="_blank">Присоединиться</a>
                 </div>
-                <div class="faction-card">
+                <div class="faction-card fade-in">
                     <h3 class="faction-name">Росгвардия</h3>
                     <p class="faction-description">Стоите на защите порядка и безопасности граждан. Быстрое реагирование и поддержание общественного спокойствия.</p>
+                    <a href="https://discord.gg/YWAggsZKpc" class="btn btn-primary" target="_blank">Присоединиться</a>
                 </div>
-                <div class="faction-card">
+                <div class="faction-card fade-in">
                     <h3 class="faction-name">ОПГ "Карма"</h3>
                     <p class="faction-description">Криминальная группировка, где ценятся верность, сила и братство. Теневая экономика и свои законы.</p>
+                    <a href="https://discord.gg/cJqazcB98b" class="btn btn-primary" target="_blank">Присоединиться</a>
                 </div>
-                <div class="faction-card">
+                <div class="faction-card fade-in">
                     <h3 class="faction-name">Федеральная Служба Безопасности</h3>
                     <p class="faction-description">Обеспечение национальной безопасности, борьба с терроризмом и шпионажем. Элита правоохранительной системы.</p>
+                    <a href="https://discord.gg/abhVDQm2Qa" class="btn btn-primary" target="_blank">Присоединиться</a>
                 </div>
-                <div class="faction-card">
+                <div class="faction-card fade-in">
                     <h3 class="faction-name">Министерство Внутренних Дел</h3>
                     <p class="faction-description">Обеспечение общественного порядка, борьба с преступностью и защита прав граждан. Патрулирование улиц и расследование преступлений.</p>
+                    <a href="https://discord.gg/XZcd357s8v" class="btn btn-primary" target="_blank">Присоединиться</a>
+                </div>
+                <div class="faction-card fade-in">
+                    <h3 class="faction-name">Прокуратура</h3>
+                    <p class="faction-description">Надзор за соблюдением законов, поддержание государственного обвинения в суде и защита прав граждан.</p>
+                    <a href="https://discord.gg/eN4FMD5eAk" class="btn btn-primary" target="_blank">Присоединиться</a>
                 </div>
             </div>
         </div>
@@ -705,21 +1319,21 @@
     <!-- Server Info -->
     <section id="server" class="server-info">
         <div class="container">
-            <h2 class="section-title">О нашем сервере</h2>
+            <h2 class="section-title fade-in">О нашем сервере</h2>
             <div class="info-grid">
-                <div class="info-card">
+                <div class="info-card fade-in">
                     <h3 class="info-title">🎮 Платформа</h3>
                     <p>Сервер работает на платформе Roblox с оптимизированным геймплеем</p>
                 </div>
-                <div class="info-card">
+                <div class="info-card fade-in">
                     <h3 class="info-title">👥 Сообщество</h3>
                     <p>Активное и дружелюбное сообщество с ежедневными ивентами</p>
                 </div>
-                <div class="info-card">
+                <div class="info-card fade-in">
                     <h3 class="info-title">🏙️ Локация</h3>
                     <p>Город Хамбург с реалистичной картой и инфраструктурой</p>
                 </div>
-                <div class="info-card">
+                <div class="info-card fade-in">
                     <h3 class="info-title">💬 Поддержка</h3>
                     <p>Круглосуточная техническая поддержка и помощь администрации</p>
                 </div>
@@ -730,7 +1344,7 @@
     <!-- Marketplace Section -->
     <section id="marketplace" class="marketplace-section">
         <div class="container">
-            <div class="marketplace-card">
+            <div class="marketplace-card fade-in">
                 <div class="marketplace-icon">🏪</div>
                 <h2 class="marketplace-title">Торговая площадка бизнесов</h2>
                 <p class="marketplace-description">
@@ -747,9 +1361,9 @@
     <!-- Staff Section -->
     <section id="staff" class="staff">
         <div class="container">
-            <h2 class="section-title">Присоединяйся к команде</h2>
+            <h2 class="section-title fade-in">Присоединяйся к команде</h2>
             <div class="staff-grid">
-                <div class="staff-card">
+                <div class="staff-card fade-in">
                     <div class="staff-icon">🛡️</div>
                     <h3 class="staff-title">Игровая администрация</h3>
                     <p>Стань частью команды модераторов и администраторов сервера</p>
@@ -757,7 +1371,7 @@
                         Подать заявление
                     </a>
                 </div>
-                <div class="staff-card">
+                <div class="staff-card fade-in">
                     <div class="staff-icon">💬</div>
                     <h3 class="staff-title">Discord модерация</h3>
                     <p>Помогай поддерживать порядок и активность в нашем Discord сообществе</p>
@@ -769,11 +1383,11 @@
 
             <!-- Support Links -->
             <div class="support-links">
-                <h3 class="section-title" style="font-size: 2rem;">📞 Поддержка и жалобы</h3>
+                <h3 class="section-title fade-in" style="font-size: 2rem;">📞 Поддержка и жалобы</h3>
                 
                 <!-- Все карточки жалоб в одной сетке по 2 в ряд -->
                 <div class="support-grid">
-                    <div class="support-card">
+                    <div class="support-card fade-in">
                         <div class="support-icon">❓</div>
                         <h3 class="support-title">Вопросы персоналу</h3>
                         <p class="support-description">Задайте вопросы команде проекта</p>
@@ -781,7 +1395,7 @@
                             Перейти
                         </a>
                     </div>
-                    <div class="support-card">
+                    <div class="support-card fade-in">
                         <div class="support-icon">💬</div>
                         <h3 class="support-title">Жалоба на пользователя Discord</h3>
                         <p class="support-description">Пожаловаться на нарушение в Discord</p>
@@ -789,7 +1403,7 @@
                             Подать жалобу
                         </a>
                     </div>
-                    <div class="support-card">
+                    <div class="support-card fade-in">
                         <div class="support-icon">🚫</div>
                         <h3 class="support-title">Жалоба на игрока</h3>
                         <p class="support-description">Пожаловаться на нарушение игровых правил</p>
@@ -797,7 +1411,7 @@
                             Подать жалобу
                         </a>
                     </div>
-                    <div class="support-card">
+                    <div class="support-card fade-in">
                         <div class="support-icon">👨‍💼</div>
                         <h3 class="support-title">Жалоба на персонал</h3>
                         <p class="support-description">Пожаловаться на действия администрации</p>
@@ -805,7 +1419,7 @@
                             Подать жалобу
                         </a>
                     </div>
-                    <div class="support-card">
+                    <div class="support-card fade-in">
                         <div class="support-icon">👑</div>
                         <h3 class="support-title">Жалоба на лидера фракции</h3>
                         <p class="support-description">Пожаловаться на действия лидера фракции</p>
@@ -813,7 +1427,7 @@
                             Подать жалобу
                         </a>
                     </div>
-                    <div class="support-card">
+                    <div class="support-card fade-in">
                         <div class="support-icon">📝</div>
                         <h3 class="support-title">Другая жалоба</h3>
                         <p class="support-description">Для других типов жалоб и обращений</p>
@@ -829,9 +1443,9 @@
     <!-- Rules -->
     <section id="rules" class="rules">
         <div class="container">
-            <h2 class="section-title">Основные правила</h2>
+            <h2 class="section-title fade-in">Основные правила</h2>
             <div class="rules-content">
-                <div class="rule-category">
+                <div class="rule-category fade-in">
                     <h3 class="category-title">🎭 Ролевая игра</h3>
                     <ul class="rule-list">
                         <li>Соблюдайте реализм персонажа</li>
@@ -840,7 +1454,7 @@
                         <li>Следуйте сценарию ситуации</li>
                     </ul>
                 </div>
-                <div class="rule-category">
+                <div class="rule-category fade-in">
                     <h3 class="category-title">⚔️ PvP взаимодействия</h3>
                     <ul class="rule-list">
                         <li>Запрещен RDM (Random Deathmatch)</li>
@@ -849,7 +1463,7 @@
                         <li>Уважайте право на жизнь персонажа</li>
                     </ul>
                 </div>
-                <div class="rule-category">
+                <div class="rule-category fade-in">
                     <h3 class="category-title">💼 Экономика и бизнес</h3>
                     <ul class="rule-list">
                         <li>Честная конкуренция</li>
@@ -861,7 +1475,7 @@
             </div>
 
             <div class="full-rules-links">
-                <h3 style="color: #667eea; margin-bottom: 1rem;">📚 Полные правила проекта</h3>
+                <h3 style="color: #ea6767; margin-bottom: 1rem;">📚 Полные правила проекта</h3>
                 <div class="rules-buttons">
                     <a href="https://discord.com/channels/1108341758590472293/1384146108938326076" class="btn btn-primary" target="_blank">
                         📋 Discord правила
@@ -928,9 +1542,9 @@
         window.addEventListener('scroll', function() {
             const header = document.querySelector('.header');
             if (window.scrollY > 100) {
-                header.style.background = 'rgba(0, 0, 0, 0.98)';
+                header.classList.add('scrolled');
             } else {
-                header.style.background = 'rgba(0, 0, 0, 0.95)';
+                header.classList.remove('scrolled');
             }
         });
 
@@ -941,6 +1555,62 @@
                 top: 0,
                 behavior: 'smooth'
             });
+        });
+
+        // Анимация появления элементов при скролле
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    if (entry.target.classList.contains('section-title')) {
+                        entry.target.classList.add('visible');
+                    }
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Создание частиц
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 30;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                
+                // Случайные размеры и позиции
+                const size = Math.random() * 5 + 2;
+                const posX = Math.random() * 100;
+                const delay = Math.random() * 20;
+                const duration = Math.random() * 10 + 15;
+                
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                particle.style.left = `${posX}%`;
+                particle.style.animationDelay = `${delay}s`;
+                particle.style.animationDuration = `${duration}s`;
+                
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        // Инициализация частиц при загрузке страницы
+        window.addEventListener('load', createParticles);
+
+        // Анимация логотипа при скролле
+        window.addEventListener('scroll', function() {
+            const scrolled = window.pageYOffset;
+            const rate = scrolled * -0.5;
+            document.querySelector('.logo h1').style.transform = `translateY(${rate}px)`;
         });
     </script>
 </body>
